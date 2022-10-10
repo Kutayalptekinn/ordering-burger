@@ -1,0 +1,163 @@
+<div id="home" class="header_hero header_hero-2 d-lg-flex align-items-center">
+    <div class="shape-1"></div>
+    <div class="shape-2"></div>
+    <div class="shape-3"></div>
+    <div class="shape-4"></div>
+    <div class="shape-5"></div>
+    <div class="shape-6"></div>
+    <div class="shape-7"></div>
+    <div class="shape-8"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="header_hero_content header_hero_content-2">
+                    <h2 class="title wow fadeInUp" data-wow-delay=".4s">Burger Restaurant</h2>
+                    <p class="wow fadeInUp" data-wow-delay=".6s">Welcome, click the button below to order a hamburger.</p>
+                    <div class="hero-btn">
+                        <button class="main-btn btn-2 mouse-hover btn-inline" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" data-wow-delay="1s">Order a Burger
+                            <span></span>
+                        </button> 
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-hero-img hero-img-2 wow fadeInUp" data-wow-delay=".2s">
+        <div class="image"> 
+            <img class="mw-75 w-75" src="/assets/hamburger.jpg" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLongTitle">Please choose how your hamburger will be prepared</h2>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+  <mat-stepper linear #stepper>
+    <mat-step [stepControl]="extraPropertiesAddForm" [editable]="false">
+      <form [formGroup]="extraPropertiesAddForm">
+        <ng-template matStepLabel>Select extra properties</ng-template>
+          <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id={{property1.Id}} formControlName={{property1.PropertyName}} >
+              <label class="form-check-label" for="marulTursu">
+                  {{property1.PropertyName}}
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id={{property2.Id}} formControlName={{property2.PropertyName}}>
+              <label class="form-check-label" for="paketSos">
+                {{property2.PropertyName}}
+              </label>
+            </div>
+          <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id={{property3.Id}} formControlName={{property3.PropertyName}}>
+              <label class="form-check-label" for="sogan">
+                {{property3.PropertyName}}
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id={{property6.Id}} formControlName={{property6.PropertyName}}>
+              <label class="form-check-label" for="ekmek">
+                {{property6.PropertyName}}
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id={{property7.Id}} formControlName={{property7.PropertyName}}>
+              <label class="form-check-label" for="domates">
+                {{property7.PropertyName}}
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id={{property8.Id}} formControlName={{property8.PropertyName}}>
+              <label class="form-check-label" for="patates">
+                {{property8.PropertyName}}
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id={{property9.Id}} formControlName={{property9.PropertyName}}>
+              <label class="form-check-label" for="cola">
+                {{property9.PropertyName}}
+              </label>
+            </div>
+        <div>
+          <button mat-button (click)="addExtraProperties(stepper)">Save</button>
+          
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="addMainFoodGroup" [editable]="false" label="Select burger type">
+      <form [formGroup]="addMainFoodGroup">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" [(ngModel)]="isKofte" [value]="true" formControlName={{property4.PropertyName}} name={{property4.PropertyName}} id={{property4.Id}}>
+          <label class="form-check-label" for={{property4.PropertyName}}>
+            {{property4.PropertyName}}
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" [(ngModel)]="isKofte" [value]="false" formControlName={{property5.PropertyName}} name={{property5.PropertyName}} id={{property5.Id}} checked>
+          <label class="form-check-label" for={{property5.PropertyName}}>
+            {{property5.PropertyName}}
+          </label>
+        </div>
+        <div>
+          <button mat-button (click)="addMainFood(stepper)">Save</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step *ngIf="isKofte" [stepControl]="addCookingTimeFormGroup" label="Select cooking time">
+      <form [formGroup]="addCookingTimeFormGroup">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="azPismis" value=true name="azPismis" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Az Pişmiş
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="ortaPismis" value=true name="ortaPismis" id="flexRadioDefault2" checked>
+          <label class="form-check-label" for="flexRadioDefault2">
+            Orta Pişmiş
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="cokPismis" value=true name="cokPismis" id="flexRadioDefault3" checked>
+          <label class="form-check-label" for="flexRadioDefault3">
+            Çok Pişmiş
+          </label>
+        </div>
+        <div>
+          <button mat-button matStepperNext (click)="addCookingTime(stepper)">Save</button>
+        </div>
+      </form>
+    </mat-step>
+    <!-- <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>Your order has been received.</p>
+      <div>
+        <button mat-button (click)="stepper.reset()">New Order</button>
+      </div>
+    </mat-step> -->
+  </mat-stepper>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="add()">Save</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+  <ngx-spinner class="spinner" type="ball-scale-multiple">{{spinnerName}}</ngx-spinner>
+  <!-- <ngx-spinner class="spinner" name="secondSpinner" type="ball-scale-multiple">Cooking</ngx-spinner>
+  <ngx-spinner class="spinner" name="thirdSpinner" type="ball-scale-multiple">Started Frying Patatoes</ngx-spinner>
+  <ngx-spinner class="spinner" name="fourthSpinner" type="ball-scale-multiple">Started Making Drink</ngx-spinner>
+  <ngx-spinner class="spinner" name="fifthSpinner" type="ball-scale-multiple">Started Making Burger</ngx-spinner> -->
